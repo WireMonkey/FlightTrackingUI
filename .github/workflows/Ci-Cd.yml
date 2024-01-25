@@ -2,8 +2,11 @@ name: Build
 on:
   push:
     branches: [ "Dev" ]
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+env:
+  APP_LOCATION: "/flightTracking" # location of your client code
+  OUTPUT_LOCATION: "/dist/flight-tracking/browser" # location of client code build output
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,3 +23,14 @@ jobs:
           cd flightTracking
           npm install
           npm run build
+
+      - name: Deploy to Azure
+        uses: Azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_DEPLOYMENT_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: "upload"
+          app_location: ${{ env.APP_LOCATION }}
+          output_location: ${{ env.OUTPUT_LOCATION }}
+          node-version: '20.x'
+          
