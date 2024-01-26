@@ -20,7 +20,9 @@ jobs:
           node-version: '20.x'
 
       - name: Create Enviroment files
-        run: node BuildEnv.js
+        run: |
+          cd flightTracking
+          node BuildEnv.js
         env:
           enviroment_details: '${{ secrets.ENVIROMENT_DETAILS }}'
       
