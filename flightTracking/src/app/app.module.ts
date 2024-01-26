@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 //PrimeNg modules
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 //Components
 import { PlaneListComponent } from './plane-list/plane-list.component';
@@ -24,7 +25,8 @@ import { PlaneListComponent } from './plane-list/plane-list.component';
     AppRoutingModule,
     TabViewModule,
     CardModule,
-    HttpClientModule
+    HttpClientModule,
+    ToggleButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
