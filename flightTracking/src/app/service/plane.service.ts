@@ -11,7 +11,7 @@ export class PlaneService {
   constructor(private readonly httpClient: HttpClient) { }
 
   getPlaneList() {
-    const keyHeader = new HttpHeaders({"x-functions-key" : environment.PlaneApiKey });
+    const keyHeader = new HttpHeaders({"x-flight-tracking" : environment.PlaneApiKey });
     
     return this.httpClient.get<Plane[]>(environment.PlaneApi, {headers: keyHeader});
   }
