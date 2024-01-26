@@ -1,6 +1,6 @@
 <h3>Planes</h3>
 <p-card *ngFor="let plane of planeList | async">
     <ng-template pTemplate="header"><h4>{{plane.Name}}</h4></ng-template>
-    <h4>Wingspan: plane.Wingspan</h4>
-    <h4>Ready To Fly:</h4><p-toggleButton [(ngModel)]="plane.ReadyToFly" onLabel="Yes" offLabel="No"></p-toggleButton>
+    <h4>Wingspan: {{plane.Wingspan}}</h4>
+    <h5>Ready To Fly:</h5><p-toggleButton disabled="true" [(ngModel)]="plane.ReadyToFly" onLabel="Yes" offLabel="No"></p-toggleButton>
 </p-card>
