@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Plane } from '../model/plane';
@@ -11,7 +11,8 @@ export class PlaneService {
   constructor(private readonly httpClient: HttpClient) { }
 
   getPlaneList() {
-    console.log(environment.PlaneApi);
-    return this.httpClient.get<Plane[]>(environment.PlaneApi)
+    const keyHeader = new HttpHeaders({"x-functions-key" : environment.PlaneApiKey });
+    
+    return this.httpClient.get<Plane[]>(environment.PlaneApi, {headers: keyHeader});
   }
 }
