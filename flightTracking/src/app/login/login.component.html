@@ -1,1 +1,2 @@
-<p>login works!</p>
+<p-button *ngIf="!isAdminLoggedIn()" label="Login" icon="pi pi-user-plus" (click)="login()"></p-button>
+<p-button *ngIf="isAdminLoggedIn()" label="Logout" icon="pi pi-user-minus" (click)="logout()"></p-button>

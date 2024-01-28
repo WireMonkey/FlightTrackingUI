@@ -1,12 +1,20 @@
-<h1>Flight Tracking</h1>
-<p-tabView>
-  <p-tabPanel header="Planes">
-    <ng-template pTemplate="content"><app-plane-list></app-plane-list></ng-template>
-  </p-tabPanel>
-  <p-tabPanel header="Flights">
-    <ng-template pTemplate="content">TBD</ng-template>
-  </p-tabPanel>
-  <p-tabPanel header="Build and Repair">
+<p-panel>
+  <ng-template pTemplate="header">
+    <h1>Flight Tracking</h1>
+  </ng-template>
+  <ng-template pTemplate="icons">
+    <app-login></app-login>
+  </ng-template>
+  
+  <p-tabView>
+    <p-tabPanel header="Planes">
+      <ng-template pTemplate="content"><app-plane-list></app-plane-list></ng-template>
+    </p-tabPanel>
+    <p-tabPanel header="Flights">
       <ng-template pTemplate="content">TBD</ng-template>
-  </p-tabPanel>
-</p-tabView>
+    </p-tabPanel>
+    <p-tabPanel header="Build and Repair">
+        <ng-template pTemplate="content">TBD</ng-template>
+    </p-tabPanel>
+  </p-tabView>
+</p-panel>

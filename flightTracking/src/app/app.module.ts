@@ -11,14 +11,31 @@ import { AppComponent } from './app.component';
 import { TabViewModule } from 'primeng/tabview';
 import { CardModule } from 'primeng/card';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { ButtonModule } from 'primeng/button';
+import { PanelModule } from 'primeng/panel';
 
 //Components
 import { PlaneListComponent } from './plane-list/plane-list.component';
+import { LoginComponent } from './login/login.component';
+import { MSAL_INSTANCE, MsalModule, MsalService } from '@azure/msal-angular';
+import { IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { environment } from '../environments/environment';
+
+export function MsalInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication({
+    auth: {
+      clientId: environment.ClientId,
+      redirectUri: environment.redirectUir,
+      postLogoutRedirectUri: environment.postLogoutRedirectUri
+    }
+  });
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlaneListComponent
+    PlaneListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -28,9 +45,18 @@ import { PlaneListComponent } from './plane-list/plane-list.component';
     CardModule,
     HttpClientModule,
     ToggleButtonModule,
-    FormsModule
+    FormsModule,
+    MsalModule,
+    ButtonModule,
+    PanelModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MsalInstanceFactory
+    }, MsalService
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
